@@ -33,6 +33,7 @@ class BaseModel:
 
     def __str__(self):
         """
+        private instance method
         Prints the string representation of 
         [<class name>] (<self.id>) <self.__dict__>
         """
@@ -56,3 +57,9 @@ class BaseModel:
         dictionary_object.update(self.__dict__)
 
         return dictionary_object
+
+    def save(self):
+        """
+        updates the public instance attribute updated_at with the current datetime
+        """
+        self.updated_at = datetime.utcnow().isoformat()
