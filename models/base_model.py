@@ -39,3 +39,23 @@ class BaseModel:
         """
         cls_name = self.__class__.__name__
         return f"[cls_name] (self.id) self.__dict__"
+
+    def to_dict(self):
+        """
+         returns a dictionary containing all keys/values
+         of __dict__ of the instance.
+        """
+        dictionary_object={}
+        dictionary _object['__class__'] = self.__class__.__name__
+
+        # Convert created_at and updated_at to ISO format strings
+        if hasattr(self, 'created_at') and isinstance(self.created_at,
+        datetime.datetime):
+            dictionary_object['created_at'] = self.created_at.isoformat()
+        if hasattr(self, 'updated_at') and isinstance(self.updated_at,
+        datetime.datetime):
+            dictionary_object['updated_at'] = self.updated_at.isoformat()
+
+        dictionary_object.update(self.__dict__)
+
+        return dictionary_object
