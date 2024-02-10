@@ -1,5 +1,5 @@
 """
-A BaseModel class that defines all common attributes/methods for other classes
+A BaseModel class that defines all common attributes/methods for other classes.
 """
 
 from datetime import datetime
@@ -8,15 +8,14 @@ import uuid
 
 class BaseModel:
     """
-    Class initialization
+    Class initialization.
     """
     def __init__(self, *args, **kwargs):
         """
-        Initialing
-        Created_at, id, Updated_at and the time_format instance
-
+        Initialing...
+        Created_at, id, Updated_at and the time_format instance.
         Created_at, Updated_at are set to the isoformat using the
-        .isoformat method
+        .isoformat method.
         """
         DATE_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
@@ -35,7 +34,7 @@ class BaseModel:
 
     def __str__(self):
         """
-        private instance method
+        private instance method.
         Prints the string representation of
         [<class name>] (<self.id>) <self.__dict__>
         """
@@ -65,6 +64,6 @@ class BaseModel:
     def save(self):
         """
         updates the public instance attribute updated_at with
-        the current datetime
+        the current datetime.
         """
         self.updated_at = datetime.utcnow().isoformat()
