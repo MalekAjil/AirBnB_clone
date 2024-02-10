@@ -11,6 +11,10 @@ class HBNBCommand(cmd.Cmd):
         """Initialization"""
         super().__init__()
 
+    def do_help(self, args):
+        """Returns information about Class methods"""
+        super().help()
+
     def do_quit(self, args):
         """Quit command to exit the program"""
         return True
