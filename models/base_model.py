@@ -63,7 +63,7 @@ class BaseModel:
         of __dict__ of the instance.
         """
         dictionary_object = self.__dict__.copy()
-        dictionary_object["created_at"] = self.created_at
-        dictionary_object["updated_at"] = self.updated_at
+        dictionary_object["created_at"] = self.created_at.isoformat()
+        dictionary_object["updated_at"] = self.updated_at.isoformat()
         dictionary_object["__class__"] = self.__class__.__name__
         return dictionary_object
