@@ -2,7 +2,7 @@
 """Command Interpreter Model"""
 import cmd
 # from models import storage
-# from models.base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
