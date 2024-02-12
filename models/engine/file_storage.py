@@ -43,12 +43,15 @@ class FileStorage:
         """
         Serializes __objects to the JSON file (path: __file_path).
         """
-        dict_obj = {}
+        serialized_objs = {}
+        for key, value in self.__objects.items():
+            serialized_objs[key] = value.to_dict()
         
-        for key, obj in self.__objects.items():
-            dict_obj[key] = obj.to_dict()
-        with open(self.__file_path, 'w', encoding="UTF-8") as f:
-            json.dump(dict_obj, f)
+        try:
+            with open(self.__file_path, 'w') as f:
+                json.dump(serialized_objs, f)
+        except Exception as e:
+            print(f"Error occurred while saving: {e}")
 
     def reload(self):
         """
