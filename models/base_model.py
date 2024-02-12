@@ -1,9 +1,11 @@
+#!/usr/bin/python3
 """
 A BaseModel class that defines all common attributes/methods for other classes.
 """
 
 from datetime import datetime
 import uuid
+from models import storage
 
 
 class BaseModel:
@@ -21,6 +23,7 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow().isoformat()
         self.updated_at = datetime.utcnow().isoformat()
+        storage.new(self)
 
         if kwargs:
             for key, value in kwargs.items():
@@ -64,3 +67,4 @@ class BaseModel:
         the current datetime.
         """
         self.updated_at = datetime.utcnow().isoformat()
+        storage.save()
