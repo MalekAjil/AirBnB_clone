@@ -18,7 +18,7 @@ class BaseModel:
         Created_at, Updated_at are set to the isoformat using the
         .isoformat method.
         """
-        DATE_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
+        DT_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
         self.created_at = datetime.utcnow().isoformat()
         self.updated_at = datetime.utcnow().isoformat()
@@ -26,7 +26,7 @@ class BaseModel:
         if kwargs:
             for key, value in kwargs.items():
                 if key in ("created_at", "updated_at"):
-                    self.__dict__[key] = datetime.strptime(value, DATE_TIME_FORMAT)
+                    self.__dict__[key] = datetime.strptime(value, DT_FORMAT)
                 elif key == "id":
                     self.__dict__[key] = str(value)
                 else:
@@ -50,9 +50,11 @@ class BaseModel:
         dictionary_object['__class__'] = self.__class__.__name__
 
         # Convert created_at and updated_at to ISO format strings
-        if hasattr(self, 'created_at') and isinstance(self.created_at, datetime):
+        if (hasattr(self, 'created_at') and
+                isinstance(self.created_at, datetime)):
             dictionary_object['created_at'] = self.created_at.isoformat()
-        if hasattr(self, 'updated_at') and isinstance(self.updated_at, datetime):
+        if (hasattr(self, 'updated_at') and
+                isinstance(self.updated_at, datetime)):
             dictionary_object['updated_at'] = self.updated_at.isoformat()
 
         dictionary_object.update(self.__dict__)
