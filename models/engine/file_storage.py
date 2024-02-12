@@ -46,12 +46,9 @@ class FileStorage:
         serialized_objs = {}
         for key, value in self.__objects.items():
             serialized_objs[key] = value.to_dict()
+        with open(self.__file_path, 'w', encoding="UTF-8") as f:
+            json.dump(serialized_objs, f)
         
-        try:
-            with open(self.__file_path, 'w') as f:
-                json.dump(serialized_objs, f)
-        except Exception as e:
-            print(f"Error occurred while saving: {e}")
 
     def reload(self):
         """
