@@ -20,20 +20,25 @@ class BaseModel:
         .isoformat method.
         """
         DATE_TIME_FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.utcnow().isoformat()
-        self.updated_at = datetime.utcnow().isoformat()
-        models.storage.new(self)
         
         if kwargs:
             for key, value in kwargs.items():
-                if key in ("created_at", "updated_at"):
-                    self.__dict__[key] = datetime.strptime(value,
-                                                           DATE_TIME_FORMAT)
-                elif key == "id":
-                    self.__dict__[key] = str(value)
+                if "created_at" == key:
+                    self.created_at = datetime.strptime(kwargs["created_at"],
+                                                        DATE_TIME_FORMAT)
+                elif "updated_at" == key:
+                    self.updated_at = datetime.strptime(kwargs["updated_at"],
+                                                        DATE_TIME_FORMAT)
+                elif "__class__" == key:
+                    pass
                 else:
-                    self.__dict__[key] = value
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.utcnow().isoformat()
+            self.updated_at = datetime.utcnow().isoformat()
+            models.storage.new(self)
+            
 
     def __str__(self):
         """
