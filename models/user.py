@@ -6,6 +6,6 @@ from .base_model import BaseModel
 class User(BaseModel):
     """represents User"""
     email = ""
-    passwoerd = ""
+    password = ""
     first_name = ""
     last_name = ""
