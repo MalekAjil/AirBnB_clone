@@ -6,7 +6,8 @@ header {
 }
 
 .logo {
-	vertical-align: middle;
+	height: 50px;
+	width: 50px;
 	margin: 10px 20px;
 	background-image: url("images/icon.png");
 }
