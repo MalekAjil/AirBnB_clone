@@ -7,7 +7,7 @@ footer {
         bottom: 0;
 }
 
-footer.div{
+.footertext{
         display: flex;
         height: 100%;
         align-items: center;
