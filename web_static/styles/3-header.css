@@ -1,0 +1,12 @@
+header {
+        color: #FFFFFF;
+        height: 70px;
+        width: 100%;
+	border: bottom 1px #CCCCCC;
+}
+
+header.logo {
+	align: left;
+	vertical-align: middle;
+	padding: left 20px;
+}
