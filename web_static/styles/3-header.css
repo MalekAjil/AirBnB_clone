@@ -9,7 +9,7 @@ header {
 	height: 50px;
 	width: 50px;
 	margin: 10px 20px;
-	background-image: url("images/icon.png");
+	background-image: url("../images/icon.png");
 	background-size: cover;
 	background-position: center;
 }
