@@ -5,7 +5,7 @@ header {
 	border-bottom: 1px solid #CCCCCC;
 }
 
-.logo {
+header.logo {
 	float: left;
 	height: 50px;
 	width: 50px;
@@ -16,7 +16,7 @@ header {
 	background-position: center;
 }
 
-.logotxt {
+header.logotxt {
 	display: flex;
 	height: 100%;
 	align-items: center;
