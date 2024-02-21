@@ -1,4 +1,4 @@
-section.filters {
+section .filters {
 	display: flex;
 	align-items: center;
 	background-color: white;
@@ -19,6 +19,8 @@ button {
 	border: 0px;
 	border-radius: 4px;
 	margin: 0px 30px 0px 0px;
+	align-items: center;
+	justify-content: center;
 }
 
 button:hover{
